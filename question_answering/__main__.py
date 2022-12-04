@@ -2,9 +2,12 @@ import yaml
 from transformers import pipeline
 import wikipedia
 import spacy
+import logging
 
 with open("../config.yaml", "r") as f:
     config = yaml.load(f, Loader=yaml.FullLoader)
+
+logging.basicConfig(level=logging.INFO,filename="../logs.log", filemode="w")
 
 QA_MODEL = pipeline(
     "question-answering",
@@ -21,8 +24,8 @@ def get_wiki_text(name: str) -> str:
     except wikipedia.exceptions.DisambiguationError as e:
         # if there name may refer to more than one articles pick the first one
         article = wikipedia.page(e.options)
-        print(e.options)
-    print("Article title ", article.title)
+        logging.warning(e.options)
+    logging.info("Article title "+ article.title)
     return article.content
 
 
