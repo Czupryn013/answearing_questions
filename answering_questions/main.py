@@ -38,8 +38,6 @@ def main_loop():
         output = model({'context': context,'question': question})
         print(output)
 
-main_loop()
-
 if __name__ == "__main__":
     main_loop()
 
