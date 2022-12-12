@@ -3,7 +3,9 @@ This system reads a question and tries to find an answer for it on Wikipedia.
 
 ## Setup
 ```bash
-./setup.sh
+./setup_linux.sh
+or 
+./setup_windosw.sh
 
 Success
 ```
